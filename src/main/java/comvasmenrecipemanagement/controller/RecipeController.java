@@ -19,8 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import comvasmenrecipemanagement.dto.RecipeCreateDTO;
-import comvasmenrecipemanagement.dto.RecipeUpdateDTO;
+import comvasmenrecipemanagement.dto.RecipeCreateUpdateDTO;
 
 @RestController
 @RequestMapping("/api/recipe")
@@ -45,14 +44,14 @@ public class RecipeController {
     }
 
     @PostMapping()
-    public ResponseEntity<RecipeDTO> postMethodName(@RequestBody RecipeCreateDTO recipeDTO) {
-        RecipeDTO recipeDTOCreated = _recipeService.saveRecipe(recipeDTO);
+    public ResponseEntity<RecipeDTO> postMethodName(@RequestBody RecipeCreateUpdateDTO recipeCreateUpdateDTO) {
+        RecipeDTO recipeDTOCreated = _recipeService.saveRecipe(recipeCreateUpdateDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(recipeDTOCreated);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<RecipeDTO> putMethodName(@PathVariable int id, @RequestBody RecipeUpdateDTO recipeDTO) {
-        RecipeDTO recipeDTOUpdated = _recipeService.updateRecipe(id, recipeDTO);
+    public ResponseEntity<RecipeDTO> putMethodName(@PathVariable int id, @RequestBody RecipeCreateUpdateDTO recipeCreateUpdateDTO) {
+        RecipeDTO recipeDTOUpdated = _recipeService.updateRecipe(id, recipeCreateUpdateDTO);
         if(recipeDTOUpdated != null){
             return ResponseEntity.ok(recipeDTOUpdated);
         }

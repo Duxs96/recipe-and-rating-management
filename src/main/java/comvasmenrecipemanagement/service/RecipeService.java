@@ -6,9 +6,8 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import comvasmenrecipemanagement.dto.RecipeCreateDTO;
+import comvasmenrecipemanagement.dto.RecipeCreateUpdateDTO;
 import comvasmenrecipemanagement.dto.RecipeDTO;
-import comvasmenrecipemanagement.dto.RecipeUpdateDTO;
 import comvasmenrecipemanagement.entity.Recipe;
 import comvasmenrecipemanagement.repository.RecipeRepository;
 
@@ -36,17 +35,17 @@ public class RecipeService {
         return recipeDTO;
     }
 
-    public RecipeDTO saveRecipe(RecipeCreateDTO recipeDTO){
+    public RecipeDTO saveRecipe(RecipeCreateUpdateDTO recipeDTO){
         Recipe recipe = mappingToEntity(recipeDTO);
         _recipeRepository.save(recipe);
         RecipeDTO recipeDTOCreated = mappingToDTO(recipe);
         return recipeDTOCreated;
     }
 
-    public RecipeDTO updateRecipe(int id, RecipeUpdateDTO recipeUpdateDTO){
+    public RecipeDTO updateRecipe(int id, RecipeCreateUpdateDTO recipeCreateUpdateDTO){
         Optional<Recipe> recipe = _recipeRepository.findById(id);
         if(recipe.isPresent()){
-            _recipeRepository.save(mappingDTOToEntity(recipe.get(), recipeUpdateDTO));
+            _recipeRepository.save(mappingDTOToEntity(recipe.get(), recipeCreateUpdateDTO));
             return mappingToDTO(recipe.get());
         }
         return null;
@@ -78,8 +77,7 @@ public class RecipeService {
         return recipe;
     }
 
-    private Recipe mappingDTOToEntity(Recipe recipe, RecipeUpdateDTO recipeDTO){
-        recipe.setId(recipeDTO.getId());
+    private Recipe mappingDTOToEntity(Recipe recipe, RecipeCreateUpdateDTO recipeDTO){
         recipe.setName(recipeDTO.getName());
         recipe.setDescription(recipeDTO.getDescription());
         recipe.setIngredients(recipeDTO.getIngredients());
@@ -87,7 +85,6 @@ public class RecipeService {
         recipe.setPreparationTime(recipeDTO.getPreparationTime());
         recipe.setDifficulty(recipeDTO.getDifficulty());
         recipe.setParticipant(recipeDTO.getParticipant());
-        // recipe.setVotes(recipeDTO.getVotes());
         return recipe;
     }
 
@@ -106,15 +103,15 @@ public class RecipeService {
         return recipeDTO;
     }
 
-    private Recipe mappingToEntity(RecipeCreateDTO recipecreateDTO){
+    private Recipe mappingToEntity(RecipeCreateUpdateDTO recipecreateUpdateDTO){
         Recipe recipe = new Recipe();
-        recipe.setName(recipecreateDTO.getName());
-        recipe.setDescription(recipecreateDTO.getDescription());
-        recipe.setIngredients(recipecreateDTO.getIngredients());
-        recipe.setInstructions(recipecreateDTO.getInstructions());
-        recipe.setPreparationTime(recipecreateDTO.getPreparationTime());
-        recipe.setDifficulty(recipecreateDTO.getDifficulty());
-        recipe.setParticipant(recipecreateDTO.getParticipant());
+        recipe.setName(recipecreateUpdateDTO.getName());
+        recipe.setDescription(recipecreateUpdateDTO.getDescription());
+        recipe.setIngredients(recipecreateUpdateDTO.getIngredients());
+        recipe.setInstructions(recipecreateUpdateDTO.getInstructions());
+        recipe.setPreparationTime(recipecreateUpdateDTO.getPreparationTime());
+        recipe.setDifficulty(recipecreateUpdateDTO.getDifficulty());
+        recipe.setParticipant(recipecreateUpdateDTO.getParticipant());
         return recipe;
     }
 

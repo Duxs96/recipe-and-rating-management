@@ -1,6 +1,9 @@
 package comvasmenrecipemanagement.dto;
 
-public class RecipeCreateDTO extends RecipeBaseDTO {
+public class RecipeCreateUpdateDTO extends RecipeBaseDTO {
 
     // add new attributes if necessary...
 }
+
+
+
