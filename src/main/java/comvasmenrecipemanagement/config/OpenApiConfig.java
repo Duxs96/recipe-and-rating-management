@@ -8,9 +8,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @OpenAPIDefinition(
     info = @Info(
-        title = "Configurador de swagger",
+        title = "VIRTUAL MASTER CHEF ILIS",
         version = "1.0.0",
-        description = "Descripción, Perro!"
+        description = "SISTEMA DE REGISTRO DE RECETAS Y VALORACIONES"
     )
 )
 public class OpenApiConfig {
