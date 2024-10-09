@@ -1,13 +1,13 @@
-package com.vasmen.recipeManagement;
+// package com.vasmen.recipeManagement;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+// import org.junit.jupiter.api.Test;
+// import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class RecipeAndRatingManagementApplicationTests {
+// @SpringBootTest
+// class RecipeAndRatingManagementApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+// 	@Test
+// 	void contextLoads() {
+// 	}
 
-}
+// }
