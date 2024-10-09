@@ -34,8 +34,11 @@ public class RecipeService {
 
     public RecipeDTO getRecipeById(int id){
         Optional<Recipe> recipe = _recipeRepository.findById(id);
-        RecipeDTO recipeDTO = mappingToDTO(recipe.get());
-        return recipeDTO;
+        if(recipe.isPresent()){
+            RecipeDTO recipeDTO = mappingToDTO(recipe.get());
+            return recipeDTO;
+        }
+        return null;
     }
 
     public RecipeDTO saveRecipe(@Valid RecipeCreateUpdateDTO recipeDTO){

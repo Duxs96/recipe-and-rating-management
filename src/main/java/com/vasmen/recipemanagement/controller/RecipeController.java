@@ -46,7 +46,10 @@ public class RecipeController {
     @GetMapping("/{id}")
     public ResponseEntity<RecipeDTO> getMethodName(@PathVariable int id) {
         RecipeDTO recipeDTO = _recipeService.getRecipeById(id);
-        return ResponseEntity.ok(recipeDTO);
+        if(recipeDTO != null){
+            return ResponseEntity.ok(recipeDTO);
+        }
+        return ResponseEntity.notFound().build();
     }
 
     @Operation(summary="Registrar nueva receta")
