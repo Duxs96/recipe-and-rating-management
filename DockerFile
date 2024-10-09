@@ -1,0 +1,21 @@
+# Etapa de build
+FROM maven:3.9.4-eclipse-temurin-21 AS build
+WORKDIR /app
+COPY pom.xml .
+RUN mvn dependency:go-offline -B
+COPY src ./src
+RUN mvn clean package -DskipTests
+
+# Etapa de ejecución
+FROM eclipse-temurin:23-jre-alpine
+EXPOSE 8080
+
+# Variables de entorno para la base de datos
+ENV DB_URL=jdbc:postgresql://c9pv5s2sq0i76o.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/dc6krv26ua1lh7
+ENV DB_USERNAME=u6s5iclivhbonk
+ENV DB_PASSWORD=pbd02274fa4021e94ab286948086a91781b56cd8edbae0e965c719ac27005c3ff
+
+# Copiar el archivo .jar generado
+COPY --from=build /app/target/*.jar app.jar
+
+ENTRYPOINT ["java", "-jar", "app.jar"]
