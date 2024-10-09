@@ -1,4 +1,4 @@
-# recipe-and-rating-management
+# RECIPE-AND-RATING-MANAGENT
 System for recording chefs' recipes and diners' ratings
 
 # LEVANTAR PROYECTO CON DOCKER...
@@ -22,3 +22,9 @@ System for recording chefs' recipes and diners' ratings
   (Ejecutar los comandos en la raíz del proyecto)
   - mvn clean install
   - mvn spring-boot:run
+
+# DESICIONES TÉCNICAS INTERESANTES DURANTE EL DESARROLLO
+  - Usar técnologias más actualizadas, Java versión 23 y dependencias.
+  - Usar anotaciones para realizar validaciones para los distintos datos.
+  - Usar Swagger para mantener la documentación del proyecto Back-end.
+  - Usar Docker para levantar el proyecto.
