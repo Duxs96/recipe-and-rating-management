@@ -19,5 +19,6 @@ System for recording chefs' recipes and diners' ratings
   - ingresar al proyecto, en el archivo application.properties comentar las líneas "Remoto con Docker" y descomentar las líneas "Remoto"
  
 * Comandos:
+  (Ejecutar los comandos en la raíz del proyecto)
   - mvn clean install
   - mvn spring-boot:run
