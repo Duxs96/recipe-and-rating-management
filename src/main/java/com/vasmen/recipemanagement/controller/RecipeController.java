@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.vasmen.recipemanagement.service.RecipeService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.vasmen.recipemanagement.dto.RecipeDTO;
+import com.vasmen.recipemanagement.service.impl.RecipeServiceImpl;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.vasmen.recipemanagement.dto.RecipeCreateUpdateDTO;
+import com.vasmen.recipemanagement.service.interfaces.RecipeService;
+
 import io.swagger.v3.oas.annotations.Operation;
 
 @RestController
@@ -31,7 +33,7 @@ public class RecipeController {
 
     private final RecipeService _recipeService;
 
-    public RecipeController(RecipeService recipeService){
+    public RecipeController(RecipeServiceImpl recipeService){
         _recipeService = recipeService;
     }
 
