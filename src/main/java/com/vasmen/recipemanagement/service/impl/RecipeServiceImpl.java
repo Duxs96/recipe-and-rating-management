@@ -1,4 +1,4 @@
-package com.vasmen.recipemanagement.service;
+package com.vasmen.recipemanagement.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,18 +11,21 @@ import com.vasmen.recipemanagement.dto.RecipeCreateUpdateDTO;
 import com.vasmen.recipemanagement.dto.RecipeDTO;
 import com.vasmen.recipemanagement.entity.Recipe;
 import com.vasmen.recipemanagement.repository.RecipeRepository;
+import com.vasmen.recipemanagement.service.interfaces.RecipeService;
+
 import jakarta.validation.Valid;
 
 @Service
 @Validated
-public class RecipeService {
+public class RecipeServiceImpl implements RecipeService {
 
     private final RecipeRepository _recipeRepository;
 
-    public RecipeService(RecipeRepository recipeRepository){
+    public RecipeServiceImpl(RecipeRepository recipeRepository){
         _recipeRepository = recipeRepository;
     }
 
+    @Override
     public List<RecipeDTO> getRecipes() {
         List<Recipe> recipes = _recipeRepository.findAll();
         List<RecipeDTO> recipesDTO = new ArrayList<>();
@@ -32,6 +35,7 @@ public class RecipeService {
         return recipesDTO;
     }
 
+    @Override
     public RecipeDTO getRecipeById(int id){
         Optional<Recipe> recipe = _recipeRepository.findById(id);
         if(recipe.isPresent()){
@@ -41,6 +45,7 @@ public class RecipeService {
         return null;
     }
 
+    @Override
     public RecipeDTO saveRecipe(@Valid RecipeCreateUpdateDTO recipeDTO){
         Recipe recipe = mappingToEntity(recipeDTO);
         _recipeRepository.save(recipe);
@@ -48,6 +53,7 @@ public class RecipeService {
         return recipeDTOCreated;
     }
 
+    @Override
     public RecipeDTO updateRecipe(int id,@Valid RecipeCreateUpdateDTO recipeCreateUpdateDTO){
         Optional<Recipe> recipe = _recipeRepository.findById(id);
         if(recipe.isPresent()){
@@ -57,6 +63,7 @@ public class RecipeService {
         return null;
     }
 
+    @Override
     public Boolean deleteRecipe(int id){
         Boolean exists = _recipeRepository.existsById(id);
         if(!exists){ return null; }
@@ -64,6 +71,7 @@ public class RecipeService {
         return true;
     }
 
+    @Override
     public RecipeDTO updateVotes(int id, boolean vote){
         Optional<Recipe> recipe = _recipeRepository.findById(id);
         if(recipe.isPresent()){

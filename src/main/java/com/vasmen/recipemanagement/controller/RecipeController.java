@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.vasmen.recipemanagement.service.RecipeService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
@@ -22,6 +21,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.vasmen.recipemanagement.dto.RecipeCreateUpdateDTO;
+import com.vasmen.recipemanagement.service.interfaces.RecipeService;
+
 import io.swagger.v3.oas.annotations.Operation;
 
 @RestController
