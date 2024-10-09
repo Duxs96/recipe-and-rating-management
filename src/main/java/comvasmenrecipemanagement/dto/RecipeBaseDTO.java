@@ -2,7 +2,10 @@ package comvasmenrecipemanagement.dto;
 
 import java.util.List;
 
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 public class RecipeBaseDTO {
@@ -12,11 +15,12 @@ public class RecipeBaseDTO {
     private String name;
     @NotBlank(message = "La descripción es requerida")
     private String description;
-    @NotBlank(message = "La lista de ingredientes no puede estar vacía")
+    @NotEmpty(message = "La lista de ingredientes no puede estar vacía")
+    @Size(min=1, message="La lista de ingredientes debe tener un producto como mínimo")
     private List<String> ingredients;
     private String instructions;
-    @NotBlank(message = "El tiempo de preparación es requerido")
-    @Size(min = 2, message = "El tiempo de preparación debe ser mayor a 1 minuto")
+    @NotNull(message = "El tiempo de preparación es requerido")
+    @Min(value = 2, message = "El tiempo de preparación debe ser mayor a 1 minuto")
     private Integer preparationTime;
     private String difficulty;
     private String participant;

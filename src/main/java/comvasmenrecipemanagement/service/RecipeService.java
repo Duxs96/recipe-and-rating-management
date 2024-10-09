@@ -5,13 +5,16 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
 import comvasmenrecipemanagement.dto.RecipeCreateUpdateDTO;
 import comvasmenrecipemanagement.dto.RecipeDTO;
 import comvasmenrecipemanagement.entity.Recipe;
 import comvasmenrecipemanagement.repository.RecipeRepository;
+import jakarta.validation.Valid;
 
 @Service
+@Validated
 public class RecipeService {
 
     private final RecipeRepository _recipeRepository;
@@ -35,14 +38,14 @@ public class RecipeService {
         return recipeDTO;
     }
 
-    public RecipeDTO saveRecipe(RecipeCreateUpdateDTO recipeDTO){
+    public RecipeDTO saveRecipe(@Valid RecipeCreateUpdateDTO recipeDTO){
         Recipe recipe = mappingToEntity(recipeDTO);
         _recipeRepository.save(recipe);
         RecipeDTO recipeDTOCreated = mappingToDTO(recipe);
         return recipeDTOCreated;
     }
 
-    public RecipeDTO updateRecipe(int id, RecipeCreateUpdateDTO recipeCreateUpdateDTO){
+    public RecipeDTO updateRecipe(int id,@Valid RecipeCreateUpdateDTO recipeCreateUpdateDTO){
         Optional<Recipe> recipe = _recipeRepository.findById(id);
         if(recipe.isPresent()){
             _recipeRepository.save(mappingDTOToEntity(recipe.get(), recipeCreateUpdateDTO));

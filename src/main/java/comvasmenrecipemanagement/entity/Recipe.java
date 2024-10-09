@@ -7,7 +7,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -21,11 +24,12 @@ public class Recipe {
     private String name;
     @NotBlank(message = "La descripción es requerida")
     private String description;
-    @NotBlank(message = "La lista de ingredientes no puede estar vacía")
+    @NotEmpty(message = "La lista de ingredientes no puede estar vacía")
+    @Size(min=1, message="La lista de ingredientes debe tener un producto como mínimo")
     private List<String> ingredients;
     private String instructions;
-    @NotBlank(message = "El tiempo de preparación es requerido")
-    @Size(min = 2, message = "El tiempo de preparación debe ser mayor a 1 minuto")
+    @NotNull(message = "El tiempo de preparación es requerido")
+    @Min(value = 2, message = "El tiempo de preparación debe ser mayor a 1 minuto")
     @Column(name = "preparation_time")
     private Integer preparationTime;
     private String difficulty;

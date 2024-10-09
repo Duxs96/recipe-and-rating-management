@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import comvasmenrecipemanagement.service.RecipeService;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -50,14 +51,14 @@ public class RecipeController {
 
     @Operation(summary="Registrar nueva receta")
     @PostMapping()
-    public ResponseEntity<RecipeDTO> postMethodName(@RequestBody RecipeCreateUpdateDTO recipeCreateUpdateDTO) {
+    public ResponseEntity<RecipeDTO> postMethodName(@Valid @RequestBody RecipeCreateUpdateDTO recipeCreateUpdateDTO) {
         RecipeDTO recipeDTOCreated = _recipeService.saveRecipe(recipeCreateUpdateDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(recipeDTOCreated);
     }
 
     @Operation(summary="Actualizar una receta por el id")
     @PutMapping("/{id}")
-    public ResponseEntity<RecipeDTO> putMethodName(@PathVariable int id, @RequestBody RecipeCreateUpdateDTO recipeCreateUpdateDTO) {
+    public ResponseEntity<RecipeDTO> putMethodName(@PathVariable int id,@Valid @RequestBody RecipeCreateUpdateDTO recipeCreateUpdateDTO) {
         RecipeDTO recipeDTOUpdated = _recipeService.updateRecipe(id, recipeCreateUpdateDTO);
         if(recipeDTOUpdated != null){
             return ResponseEntity.ok(recipeDTOUpdated);
