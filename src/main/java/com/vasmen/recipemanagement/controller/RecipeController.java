@@ -33,7 +33,7 @@ public class RecipeController {
 
     private final RecipeService _recipeService;
 
-    public RecipeController(RecipeServiceImpl recipeService){
+    public RecipeController(RecipeService recipeService){
         _recipeService = recipeService;
     }
 
