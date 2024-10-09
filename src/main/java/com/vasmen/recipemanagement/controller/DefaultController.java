@@ -1,4 +1,4 @@
-package comvasmenrecipemanagement.controller;
+package com.vasmen.recipemanagement.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
