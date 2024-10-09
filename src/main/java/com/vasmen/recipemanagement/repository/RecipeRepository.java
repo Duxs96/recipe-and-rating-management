@@ -1,4 +1,4 @@
-package comvasmenrecipemanagement.repository;
+package com.vasmen.recipemanagement.repository;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import comvasmenrecipemanagement.entity.Recipe;
+import com.vasmen.recipemanagement.entity.Recipe;
 
 @Repository
 public interface RecipeRepository extends JpaRepository<Recipe, Integer> {

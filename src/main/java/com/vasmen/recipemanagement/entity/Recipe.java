@@ -1,4 +1,4 @@
-package comvasmenrecipemanagement.entity;
+package com.vasmen.recipemanagement.entity;
 
 import java.util.List;
 

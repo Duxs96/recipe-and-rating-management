@@ -1,4 +1,4 @@
-package comvasmenrecipemanagement.service;
+package com.vasmen.recipemanagement.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,10 +7,10 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
-import comvasmenrecipemanagement.dto.RecipeCreateUpdateDTO;
-import comvasmenrecipemanagement.dto.RecipeDTO;
-import comvasmenrecipemanagement.entity.Recipe;
-import comvasmenrecipemanagement.repository.RecipeRepository;
+import com.vasmen.recipemanagement.dto.RecipeCreateUpdateDTO;
+import com.vasmen.recipemanagement.dto.RecipeDTO;
+import com.vasmen.recipemanagement.entity.Recipe;
+import com.vasmen.recipemanagement.repository.RecipeRepository;
 import jakarta.validation.Valid;
 
 @Service

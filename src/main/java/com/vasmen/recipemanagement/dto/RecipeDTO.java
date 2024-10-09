@@ -1,4 +1,4 @@
-package comvasmenrecipemanagement.dto;
+package com.vasmen.recipemanagement.dto;
 
 public class RecipeDTO extends RecipeBaseDTO {
 

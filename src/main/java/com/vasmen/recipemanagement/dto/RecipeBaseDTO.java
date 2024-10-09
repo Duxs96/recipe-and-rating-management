@@ -1,4 +1,4 @@
-package comvasmenrecipemanagement.dto;
+package com.vasmen.recipemanagement.dto;
 
 import java.util.List;
 

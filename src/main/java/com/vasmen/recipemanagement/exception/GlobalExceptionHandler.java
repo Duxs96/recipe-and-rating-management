@@ -1,4 +1,4 @@
-package comvasmenrecipemanagement.exception;
+package com.vasmen.recipemanagement.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
