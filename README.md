@@ -1,6 +1,8 @@
 # RECIPE-AND-RATING-MANAGENT
 System for recording chefs' recipes and diners' ratings
 
+* Dirección donde se ejecuta el sistema back-end: http://localhost:8080
+
 # LEVANTAR PROYECTO CON DOCKER...
 * Requisitos:
   - Docker instalado.
